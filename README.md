@@ -1,14 +1,19 @@
-# 🏠 SRM HOSTEL - Smart Issue Tracking System
+# SRM HOSTEL - Smart Issue Tracking System
 
 A modern, full-stack web application for managing hostel facility issues at SRM Institute of Science and Technology.
+
+live url=
+Project Console: https://console.firebase.google.com/project/srm-hostel-system/overview
+Hosting URL: https://srm-hostel-system.web.app
+
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![React](https://img.shields.io/badge/React-18.2-61DAFB.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
-## ✨ Features
+##  Features
 
-### For Students 🎓
+### For Students 
 - **Quick Issue Reporting**: Report maintenance issues with photos in under 30 seconds
 - **Real-time Tracking**: Monitor issue status from reported to resolved
 - **Announcements**: Stay updated with hostel-specific notifications
@@ -16,7 +21,7 @@ A modern, full-stack web application for managing hostel facility issues at SRM 
 - **Community Interaction**: Comment on and upvote public issues
 - **Mobile Responsive**: Full functionality on smartphones
 
-### For Administrators 🛠️
+### For Administrators 
 - **Dashboard Analytics**: Comprehensive insights into issue patterns
 - **Issue Management**: Assign tasks to maintenance staff
 - **Announcement System**: Create targeted notifications
@@ -24,7 +29,7 @@ A modern, full-stack web application for managing hostel facility issues at SRM 
 - **Advanced Filters**: Search and filter by category, status, priority
 - **Reports**: Generate insights on resolution times and issue trends
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - **Node.js** 16.x or higher
@@ -56,7 +61,7 @@ npm run build
 npm run preview
 ```
 
-## 📱 Demo Access
+##  Demo Access
 
 ### Student Login
 - **Email**: `student@srmist.edu.in`
@@ -69,7 +74,7 @@ npm run preview
 
 > **Note**: This is a demo application with simulated authentication. In production, integrate with your actual authentication system.
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 srm-hostel-complete-app/
@@ -108,7 +113,7 @@ srm-hostel-complete-app/
 └── README.md
 ```
 
-## 🎨 Technology Stack
+## Technology Stack
 
 - **Frontend Framework**: React 18
 - **Build Tool**: Vite
@@ -118,7 +123,7 @@ srm-hostel-complete-app/
 - **Date Handling**: date-fns
 - **State Management**: React Context API
 
-## 🔧 Configuration
+##  Configuration
 
 ### Environment Variables
 
@@ -145,14 +150,14 @@ theme: {
 }
 ```
 
-## 📦 Available Scripts
+## Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint (if configured)
 
-## 🌐 Deployment
+## Deployment
 
 ### Vercel (Recommended)
 
@@ -183,7 +188,7 @@ npm run build
 # Upload the contents of 'dist/' folder to your web server
 ```
 
-## 🔌 API Integration
+## API Integration
 
 The app currently uses mock data in `src/utils/mockData.js`. To integrate with a real backend:
 
@@ -205,7 +210,7 @@ export const issueAPI = {
 
 2. Replace mock data calls with API calls in your components
 
-## 📋 Features Roadmap
+##  Features Roadmap
 
 - [x] User authentication
 - [x] Issue reporting with image upload
@@ -220,7 +225,7 @@ export const issueAPI = {
 - [ ] Dark mode
 - [ ] QR code issue reporting
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -230,11 +235,11 @@ Contributions are welcome! Please follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
+##  License
 
 This project is licensed under the MIT License.
 
-## 👥 Authors
+##  Authors
 
 Developed for SRM Institute of Science and Technology
 
@@ -244,7 +249,7 @@ For support or questions:
 - Email: support@srmhostel.edu.in
 - Create an issue in the repository
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - SRM Institute of Science and Technology
 - All contributors and testers
@@ -252,5 +257,8 @@ For support or questions:
 
 ---
 
-**Made with ❤️ for SRM Students**
-# srm-hostel-system
+Author
+
+Nitin Raj
+B.Tech Engineering Student
+SRM Institute of Science and Technology
