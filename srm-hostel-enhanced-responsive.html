@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enhanced Mobile Support -->
+    <meta name="theme-color" content="#003F87">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>">
+    <link rel="manifest" href="data:application/json,{"name":"SRM HOSTEL","short_name":"SRM","start_url":"/","display":"standalone","background_color":"#003F87","theme_color":"#003F87"}">
+
+    <title>SRM HOSTEL - Smart Issue Tracking</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --srm-blue: #003F87;
+            --srm-gold: #D4AF37;
+            --accent-teal: #14B8A6;
+            --accent-coral: #FF6B6B;
+            --accent-green: #10B981;
+            --accent-purple: #8B5CF6;
+            --bg-light: #F9FAFB;
+            --text-dark: #1A1A1A;
+            --text-gray: #6B7280;
+            --border-color: #E5E7EB;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* ========== LOGIN PAGE ========== */
+        .login-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .login-left {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .login-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4rem;
+        }
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--srm-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+        }
+
+        .brand-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--srm-blue);
+        }
+
+        .login-hero {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-hero h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .login-hero h1 .highlight {
+            color: var(--srm-blue);
+        }
+
+        .login-hero p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            margin-bottom: 3rem;
+            max-width: 500px;
+        }
+
+        .feature-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #DBEAFE, #93C5FD);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 1rem;
+        }
+
+        .feature-icon.orange {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+        }
+
+        .feature-card h3 {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .login-badges {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .badge-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .login-right {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .login-form-container {
+            max-width: 440px;
+            width: 100%;
+        }
+
+        .login-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #DBEAFE, #93C5FD);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 2rem;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-header h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .login-header p a {
+            color: var(--srm-blue);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .replit-badge {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--srm-blue);
+            box-shadow: 0 0 0 3px rgba(0, 63, 135, 0.1);
+        }
+
+        .password-input-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .password-toggle:hover {
+            opacity: 1;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .remember-me label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            cursor: pointer;
+        }
+
+        .btn {
+            padding: 0.875rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--srm-blue);
+            color: white;
+            width: 100%;
+            box-shadow: 0 4px 14px 0 rgba(0, 63, 135, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: #002855;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(0, 63, 135, 0.5);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .btn-google {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .btn-google:hover {
+            background: var(--bg-light);
+            border-color: var(--text-gray);
+        }
+
+        /* ========== ADMIN DASHBOARD ========== */
+        .dashboard {
+            display: none;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .dashboard.active {
+            display: grid;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(180deg, var(--srm-blue) 0%, #002855 100%);
+            padding: 30px 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .logo-text h3 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .logo-text p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-section {
+            margin-bottom: 30px;
+        }
+
+        .nav-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-badge {
+            margin-left: auto;
+            background: var(--accent-coral);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+            max-width: 1600px;
+            background: var(--bg-light);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .search-bar {
+            position: relative;
+            width: 400px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 15px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--srm-blue);
+            box-shadow: 0 0 0 4px rgba(0, 63, 135, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-gray);
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--text-dark);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--srm-blue);
+            color: var(--srm-blue);
+        }
+
+        .btn-blue {
+            background: var(--srm-blue);
+            color: white;
+        }
+
+        .btn-blue:hover {
+            background: #002855;
+            transform: translateY(-2px);
+        }
+
+        .notification-icon {
+            position: relative;
+            width: 44px;
+            height: 44px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border-color);
+        }
+
+        .notification-icon:hover {
+            border-color: var(--srm-blue);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--accent-coral);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--srm-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Manrope', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .stat-change {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .stat-change.positive {
+            color: var(--accent-green);
+        }
+
+        .stat-change.negative {
+            color: var(--accent-coral);
+        }
+
+        /* Issues Table */
+        .issues-section {
+            background: white;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-tab {
+            padding: 8px 20px;
+            border-radius: 10px;
+            background: transparent;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab.active {
+            background: var(--srm-blue);
+            color: white;
+        }
+
+        .filter-tab:hover:not(.active) {
+            background: var(--bg-light);
+        }
+
+        .issues-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .issues-table thead {
+            background: var(--bg-light);
+        }
+
+        .issues-table th {
+            padding: 16px 24px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .issues-table td {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border-color);
+            font-size: 14px;
+        }
+
+        .issues-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        .issues-table tbody tr:hover {
+            background: var(--bg-light);
+        }
+
+        .issue-id {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            color: var(--text-gray);
+        }
+
+        .issue-details {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .issue-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .issue-text h4 {
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .issue-text p {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-reported {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .status-assigned {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .status-progress {
+            background: #E0E7FF;
+            color: #4338CA;
+        }
+
+        .status-resolved {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .priority-badge {
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .priority-emergency {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .priority-high {
+            background: #FFEDD5;
+            color: #9A3412;
+        }
+
+        .priority-medium {
+            background: #FEF3C7;
+            color: #854D0E;
+        }
+
+        .priority-low {
+            background: #E0E7FF;
+            color: #3730A3;
+        }
+
+        .action-dots {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            color: var(--text-gray);
+        }
+
+        .action-dots:hover {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        /* Charts Grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .chart-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .chart-filter {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 6px 16px;
+            border-radius: 8px;
+            background: transparent;
+            border: 2px solid var(--border-color);
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--srm-blue);
+            color: white;
+            border-color: var(--srm-blue);
+        }
+
+        .filter-btn:hover:not(.active) {
+            border-color: var(--srm-blue);
+            color: var(--srm-blue);
+        }
+
+        .chart-placeholder {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-light);
+            border-radius: 12px;
+            color: var(--text-gray);
+            font-size: 24px;
+        }
+
+        .category-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .category-info {
+            flex: 1;
+        }
+
+        .category-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .category-bar {
+            height: 8px;
+            background: var(--bg-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .category-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.6s ease;
+        }
+
+        .category-value {
+            font-family: 'Manrope', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        /* Student Page (keeping original design) */
+        .student-container {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .student-container.active {
+            display: block;
+        }
+
+        .student-header {
+            background: white;
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .student-logo {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .student-nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .student-nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .student-nav a:hover {
+            color: var(--srm-blue);
+        }
+
+        .student-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-light);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .icon-btn:hover {
+            background: var(--srm-blue);
+            color: white;
+        }
+
+        .banner {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .banner-content h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .banner-content p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+
+        .banner-discount {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .discount-badge {
+            font-family: 'Sora', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .categories-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header-student {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title-student {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .view-all {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--srm-blue);
+        }
+
+        .category-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .category-name {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .category-count {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+        }
+
+        .my-issues-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .issues-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-light);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: var(--srm-blue);
+            color: white;
+        }
+
+        .issue-card {
+            background: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1.5rem;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .issue-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateX(4px);
+        }
+
+        .issue-category-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .issue-info h4 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            font-size: 1.05rem;
+        }
+
+        .issue-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .issue-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .close-btn:hover {
+            opacity: 1;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--srm-blue);
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'DM Sans', sans-serif;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--srm-blue);
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--srm-blue);
+            background: var(--bg-light);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .login-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .login-left {
+                display: none;
+            }
+            
+            .login-right {
+                padding: 2rem;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .quick-stats,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .banner {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .search-bar {
+                width: 100%;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+        }
+    
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1024px) {
+            .login-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .login-left {
+                display: none;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                z-index: 1000;
+                transition: left 0.3s ease;
+            }
+            
+            .sidebar.mobile-open {
+                left: 0;
+            }
+            
+            .search-bar {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .categories-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+            
+            .category-card {
+                padding: 20px;
+            }
+            
+            .category-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 28px;
+            }
+            
+            .modal-content {
+                max-width: 100%;
+                margin: 0;
+                border-radius: 16px 16px 0 0;
+            }
+            
+            .form-row {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .login-right {
+                padding: 2rem;
+            }
+            
+            .top-bar {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            
+            .stats-grid {
+                gap: 12px;
+            }
+            
+            .stat-card {
+                padding: 16px;
+            }
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background: var(--srm-blue);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 63, 135, 0.4);
+            z-index: 999;
+        }
+        
+        @media (max-width: 1024px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+        
+        /* Mobile Overlay */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .mobile-overlay.active {
+            display: block;
+        }
+        
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            z-index: 9999;
+            animation: slideIn 0.3s ease;
+            max-width: 400px;
+        }
+        
+        .toast.success {
+            border-left: 4px solid var(--accent-green);
+        }
+        
+        .toast.error {
+            border-left: 4px solid var(--accent-coral);
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+</style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-container" id="loginPage">
+        <div class="login-left">
+            <div class="login-brand">
+                <div class="brand-icon">S</div>
+                <div class="brand-text">SRM Hostel</div>
+            </div>
+
+            <div class="login-hero">
+                <h1>
+                    Hostel Maintenance<br>
+                    <span class="highlight">Made Simple.</span>
+                </h1>
+                <p>
+                    Report issues instantly, track resolution status in real-time,
+                    and enjoy a better living experience on campus.
+                </p>
+
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h3>Quick Reporting</h3>
+                        <p>Report plumbing, electrical, or other issues in seconds.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon orange">⏱️</div>
+                        <h3>Real-time Tracking</h3>
+                        <p>Stay updated on the status of your complaints.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-badges">
+                <div class="badge">
+                    <div class="badge-icon">✓</div>
+                    24/7 Support
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">✓</div>
+                    Fast Resolution
+                </div>
+                <div class="badge">
+                    <div class="badge-icon">✓</div>
+                    Official Portal
+                </div>
+            </div>
+        </div>
+
+        <div class="login-right">
+            <div class="login-form-container">
+                <div class="login-icon">📋</div>
+                
+                <div class="login-header">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to access your dashboard</p>
+                </div>
+
+                <form onsubmit="handleLogin(event)">
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 1rem;">
+                        Login with SRM Account →
+                    </button>
+                    
+                    <p style="text-align: center; font-size: 0.85rem; color: var(--text-gray);">
+                        By logging in, you agree to the Hostel Rules & Regulations.
+                    </p>
+                </form>
+            </div>
+
+            <div class="replit-badge">
+                <span>⚡</span> Made with Replit
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="dashboard" id="adminDashboard">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-icon">🏠</div>
+                <div class="logo-text">
+                    <h3>SRM HOSTEL</h3>
+                    <p>Admin Portal</p>
+                </div>
+            </div>
+
+            <nav>
+                <div class="nav-section">
+                    <div class="nav-label">Main</div>
+                    <div class="nav-item active">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        Dashboard
+                    </div>
+                    <div class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                        All Issues
+                        <span class="nav-badge">67</span>
+                    </div>
+                    <div class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                        Announcements
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">Manage</div>
+                    <div class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        Hostels
+                    </div>
+                    <div class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                        </svg>
+                        Staff
+                    </div>
+                    <div class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        Lost & Found
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-label">Settings</div>
+                    <div class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        Settings
+                    </div>
+                    <div class="nav-item" onclick="logout()">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        Logout
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <div class="search-bar">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <input type="text" placeholder="Search issues, hostels, students...">
+                </div>
+                <div class="top-actions">
+                    <button class="action-btn btn-outline">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                        </svg>
+                        Export
+                    </button>
+                    <button class="action-btn btn-blue" onclick="openReportModal('New Issue')">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 4v16m8-8H4"/>
+                        </svg>
+                        New Issue
+                    </button>
+                    <div class="notification-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                        <span class="notification-badge">8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #DBEAFE, #93C5FD);">📊</div>
+                    </div>
+                    <div class="stat-label">Total Issues</div>
+                    <div class="stat-value">234</div>
+                    <span class="stat-change positive">↑ 12% from last week</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">⏳</div>
+                    </div>
+                    <div class="stat-label">Pending Issues</div>
+                    <div class="stat-value">67</div>
+                    <span class="stat-change negative">↑ 8 new today</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #D1FAE5, #6EE7B7);">✅</div>
+                    </div>
+                    <div class="stat-label">Resolved This Month</div>
+                    <div class="stat-value">156</div>
+                    <span class="stat-change positive">↑ 23% improvement</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon" style="background: linear-gradient(135deg, #E0E7FF, #C7D2FE);">⚡</div>
+                    </div>
+                    <div class="stat-label">Avg Response Time</div>
+                    <div class="stat-value">2.3h</div>
+                    <span class="stat-change positive">↓ 45min faster</span>
+                </div>
+            </div>
+
+            <div class="issues-section">
+                <div class="section-header">
+                    <h2 class="section-title">Recent Issues</h2>
+                    <div class="filter-tabs">
+                        <button class="filter-tab active">All</button>
+                        <button class="filter-tab">Pending</button>
+                        <button class="filter-tab">In Progress</button>
+                        <button class="filter-tab">Resolved</button>
+                    </div>
+                </div>
+                <table class="issues-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Issue</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Reported</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="issue-id">#2847</span></td>
+                            <td>
+                                <div class="issue-details">
+                                    <div class="issue-icon" style="background: linear-gradient(135deg, #DBEAFE, #93C5FD);">🚰</div>
+                                    <div class="issue-text">
+                                        <h4>Water leakage in bathroom</h4>
+                                        <p>Continuous dripping from ceiling tap</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>KARRI - Block A - Room 245</td>
+                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td><span class="priority-badge priority-emergency">Emergency</span></td>
+                            <td>2 hours ago</td>
+                            <td>
+                                <div class="action-dots">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="12" cy="5" r="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <circle cx="12" cy="19" r="2"/>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="issue-id">#2846</span></td>
+                            <td>
+                                <div class="issue-details">
+                                    <div class="issue-icon" style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">💡</div>
+                                    <div class="issue-text">
+                                        <h4>Corridor lights not working</h4>
+                                        <p>Complete darkness in evening hours</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>PARRI - Block B - Floor 3</td>
+                            <td><span class="status-badge status-assigned">Assigned</span></td>
+                            <td><span class="priority-badge priority-high">High</span></td>
+                            <td>5 hours ago</td>
+                            <td>
+                                <div class="action-dots">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="12" cy="5" r="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <circle cx="12" cy="19" r="2"/>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="issue-id">#2845</span></td>
+                            <td>
+                                <div class="issue-details">
+                                    <div class="issue-icon" style="background: linear-gradient(135deg, #D1FAE5, #6EE7B7);">🧹</div>
+                                    <div class="issue-text">
+                                        <h4>Common bathroom not cleaned</h4>
+                                        <p>Needs immediate attention</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>OARRI - Block A - Floor 2</td>
+                            <td><span class="status-badge status-reported">Reported</span></td>
+                            <td><span class="priority-badge priority-medium">Medium</span></td>
+                            <td>1 day ago</td>
+                            <td>
+                                <div class="action-dots">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="12" cy="5" r="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <circle cx="12" cy="19" r="2"/>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="issue-id">#2844</span></td>
+                            <td>
+                                <div class="issue-details">
+                                    <div class="issue-icon" style="background: linear-gradient(135deg, #E0E7FF, #A5B4FC);">📶</div>
+                                    <div class="issue-text">
+                                        <h4>WiFi not working in room</h4>
+                                        <p>Unable to connect to network</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>MANARONJITHM - Block A - 156</td>
+                            <td><span class="status-badge status-resolved">Resolved</span></td>
+                            <td><span class="priority-badge priority-low">Low</span></td>
+                            <td>2 days ago</td>
+                            <td>
+                                <div class="action-dots">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="12" cy="5" r="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <circle cx="12" cy="19" r="2"/>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="issue-id">#2843</span></td>
+                            <td>
+                                <div class="issue-details">
+                                    <div class="issue-icon" style="background: linear-gradient(135deg, #FCE7F3, #F9A8D4);">🛏️</div>
+                                    <div class="issue-text">
+                                        <h4>Broken bed frame</h4>
+                                        <p>Safety hazard, needs replacement</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>SANSSAI - Block B - 312</td>
+                            <td><span class="status-badge status-progress">In Progress</span></td>
+                            <td><span class="priority-badge priority-medium">Medium</span></td>
+                            <td>3 days ago</td>
+                            <td>
+                                <div class="action-dots">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <circle cx="12" cy="5" r="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <circle cx="12" cy="19" r="2"/>
+                                    </svg>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Issue Trends</h3>
+                        <div class="chart-filter">
+                            <button class="filter-btn">Week</button>
+                            <button class="filter-btn active">Month</button>
+                            <button class="filter-btn">Year</button>
+                        </div>
+                    </div>
+                    <div class="chart-placeholder">📊 Chart visualization would appear here</div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Issues by Category</h3>
+                    </div>
+                    <div class="category-breakdown">
+                        <div class="category-item">
+                            <div class="category-color" style="background: #3B82F6;"></div>
+                            <div class="category-info">
+                                <div class="category-name">Cleanliness</div>
+                                <div class="category-bar">
+                                    <div class="category-bar-fill" style="width: 78%; background: #3B82F6;"></div>
+                                </div>
+                            </div>
+                            <div class="category-value">78</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-color" style="background: #F59E0B;"></div>
+                            <div class="category-info">
+                                <div class="category-name">Plumbing</div>
+                                <div class="category-bar">
+                                    <div class="category-bar-fill" style="width: 52%; background: #F59E0B;"></div>
+                                </div>
+                            </div>
+                            <div class="category-value">52</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-color" style="background: #10B981;"></div>
+                            <div class="category-info">
+                                <div class="category-name">Electrical</div>
+                                <div class="category-bar">
+                                    <div class="category-bar-fill" style="width: 45%; background: #10B981;"></div>
+                                </div>
+                            </div>
+                            <div class="category-value">45</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-color" style="background: #8B5CF6;"></div>
+                            <div class="category-info">
+                                <div class="category-name">Internet/WiFi</div>
+                                <div class="category-bar">
+                                    <div class="category-bar-fill" style="width: 34%; background: #8B5CF6;"></div>
+                                </div>
+                            </div>
+                            <div class="category-value">34</div>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-color" style="background: #EC4899;"></div>
+                            <div class="category-info">
+                                <div class="category-name">Furniture</div>
+                                <div class="category-bar">
+                                    <div class="category-bar-fill" style="width: 25%; background: #EC4899;"></div>
+                                </div>
+                            </div>
+                            <div class="category-value">25</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Student Page -->
+    <div class="student-container" id="studentPage">
+        <div class="student-header">
+            <div class="student-logo">SRM HOSTEL</div>
+            <nav class="student-nav">
+                <a href="#">Home</a>
+                <a href="#">My Issues</a>
+                <a href="#">Announcements</a>
+                <a href="#">Lost & Found</a>
+            </nav>
+            <div class="student-actions">
+                <button class="icon-btn">🔔</button>
+                <button class="icon-btn">❤️</button>
+                <button class="icon-btn">🛒</button>
+                <button class="icon-btn" onclick="logout()">👤</button>
+            </div>
+        </div>
+
+        <div class="banner">
+            <div class="banner-content">
+                <h2>Report Your Hostel Issues</h2>
+                <p>Quick and easy issue reporting for better hostel maintenance</p>
+            </div>
+            <div class="banner-discount">
+                <div class="discount-badge">24/7</div>
+                <div>Support Available</div>
+            </div>
+        </div>
+
+        <div class="categories-section">
+            <div class="section-header-student">
+                <h2 class="section-title-student">Select Issue Category</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" onclick="openReportModal('Plumbing')">
+                    <span class="category-icon">🚰</span>
+                    <div class="category-name">Plumbing</div>
+                    <div class="category-count">Water & Drainage</div>
+                </div>
+                <div class="category-card" onclick="openReportModal('Electrical')">
+                    <span class="category-icon">💡</span>
+                    <div class="category-name">Electrical</div>
+                    <div class="category-count">Lights & Power</div>
+                </div>
+                <div class="category-card" onclick="openReportModal('Cleanliness')">
+                    <span class="category-icon">🧹</span>
+                    <div class="category-name">Cleanliness</div>
+                    <div class="category-count">Cleaning Issues</div>
+                </div>
+                <div class="category-card" onclick="openReportModal('Internet')">
+                    <span class="category-icon">📡</span>
+                    <div class="category-name">Internet/Wi-Fi</div>
+                    <div class="category-count">Connectivity</div>
+                </div>
+                <div class="category-card" onclick="openReportModal('Furniture')">
+                    <span class="category-icon">🪑</span>
+                    <div class="category-name">Furniture</div>
+                    <div class="category-count">Beds & Tables</div>
+                </div>
+                <div class="category-card" onclick="openReportModal('Security')">
+                    <span class="category-icon">🔒</span>
+                    <div class="category-name">Security</div>
+                    <div class="category-count">Safety & Locks</div>
+                </div>
+                <div class="category-card" onclick="openReportModal('AC/Fan')">
+                    <span class="category-icon">❄️</span>
+                    <div class="category-name">AC/Fan</div>
+                    <div class="category-count">Cooling Issues</div>
+                </div>
+                <div class="category-card" onclick="openReportModal('Other')">
+                    <span class="category-icon">📝</span>
+                    <div class="category-name">Other</div>
+                    <div class="category-count">Miscellaneous</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-issues-section">
+            <div class="issues-header">
+                <h2 class="section-title" style="color: var(--text-dark);">My Reported Issues</h2>
+                <div class="filter-tabs">
+                    <button class="tab active">All</button>
+                    <button class="tab">Pending</button>
+                    <button class="tab">In Progress</button>
+                    <button class="tab">Resolved</button>
+                </div>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-category-icon">🚰</div>
+                <div class="issue-info">
+                    <h4>Leaking Tap in Bathroom</h4>
+                    <div class="issue-meta">
+                        <span>📍 KARRI - Block A - Room 205</span>
+                        <span>📅 Jan 25, 2026</span>
+                        <span>⏰ High Priority</span>
+                    </div>
+                </div>
+                <div class="status-badge status-progress">In Progress</div>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-category-icon">💡</div>
+                <div class="issue-info">
+                    <h4>Corridor Light Not Working</h4>
+                    <div class="issue-meta">
+                        <span>📍 KARRI - Block A - Floor 2</span>
+                        <span>📅 Jan 24, 2026</span>
+                        <span>⏰ Medium Priority</span>
+                    </div>
+                </div>
+                <div class="status-badge status-reported">Reported</div>
+            </div>
+
+            <div class="issue-card">
+                <div class="issue-category-icon">🧹</div>
+                <div class="issue-info">
+                    <h4>Bathroom Cleaning Required</h4>
+                    <div class="issue-meta">
+                        <span>📍 KARRI - Block A - Room 205</span>
+                        <span>📅 Jan 23, 2026</span>
+                        <span>⏰ Low Priority</span>
+                    </div>
+                </div>
+                <div class="status-badge status-resolved">Resolved</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Issue Modal -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Report New Issue</h3>
+                <button class="close-btn" onclick="closeReportModal()">×</button>
+            </div>
+            <form onsubmit="submitIssue(event)">
+                <div class="form-group">
+                    <label>Category</label>
+                    <input type="text" id="issueCategory" readonly style="background: var(--bg-light);">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Hostel</label>
+                        <select required>
+                            <option value="">Select Hostel</option>
+                            <option>KARRI</option>
+                            <option>PARRI</option>
+                            <option>OARRI</option>
+                            <option>MANARONJITHM</option>
+                            <option>SANSSAI</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Block</label>
+                        <select required>
+                            <option value="">Select Block</option>
+                            <option>Block A</option>
+                            <option>Block B</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Room Number</label>
+                        <input type="text" placeholder="e.g., 205" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select required>
+                            <option value="">Select Priority</option>
+                            <option>Low</option>
+                            <option>Medium</option>
+                            <option>High</option>
+                            <option>Emergency</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Issue Description</label>
+                    <textarea placeholder="Describe the issue in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Upload Photos (Optional)</label>
+                    <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                        <input type="file" id="fileInput" accept="image/*" multiple>
+                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
+                        <div style="color: var(--text-gray);">Click to upload images</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox">
+                        Make this issue public (visible to all students)
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Issue Report</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            
+            // Demo: Show a prompt to choose role
+            const role = prompt('Login as:\n1. Admin (type: admin)\n2. Student (type: student)\n\nEnter your choice:');
+            
+            if (role && role.toLowerCase().includes('admin')) {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('adminDashboard').classList.add('active');
+            } else if (role) {
+                document.getElementById('loginPage').style.display = 'none';
+                document.getElementById('studentPage').classList.add('active');
+            }
+        }
+
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                document.getElementById('loginPage').style.display = 'grid';
+                document.getElementById('adminDashboard').classList.remove('active');
+                document.getElementById('studentPage').classList.remove('active');
+            }
+        }
+
+        function openReportModal(category) {
+            document.getElementById('issueCategory').value = category;
+            document.getElementById('reportModal').classList.add('active');
+        }
+
+        function closeReportModal() {
+            document.getElementById('reportModal').classList.remove('active');
+        }
+
+        function submitIssue(event) {
+            event.preventDefault();
+            alert('Issue reported successfully! You will receive updates via email.');
+            closeReportModal();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('reportModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeReportModal();
+            }
+        });
+    </script>
+</body>
+</html>
