@@ -6,6 +6,11 @@ live url=
 Project Console: https://console.firebase.google.com/project/srm-hostel-system/overview
 Hosting URL: https://srm-hostel-system.web.app
 
+video = https://drive.google.com/drive/folders/1vJJcUwAV8kaRVunVcQbq0Rxa6neuHV-r?usp=sharing
+( not able to upload on unstop)
+file zip= https://drive.google.com/file/d/14XKfxDiLnbQZYfzRGfyNOVfltZ52QQhv/view?usp=sharing
+
+
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![React](https://img.shields.io/badge/React-18.2-61DAFB.svg)
